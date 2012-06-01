@@ -40,6 +40,14 @@
 		
 		var origHandler = handleObj.handler,
 			keys = handleObj.data.toLowerCase().split(" ");
+
+        // don't worry for the metas order.
+        for ( var i = 0, l = keys.length; i < l; i++ ) {
+            if ( keys[i] ) {
+                metas = keys[i].split('+').sort();
+                keys[i] = metas.join('+');
+            }
+        }
 	
 		handleObj.handler = function( event ) {
 			// Don't fire in text-accepting inputs that we didn't directly bind to
